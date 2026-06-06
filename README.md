@@ -1,4 +1,4 @@
-# SYNAPSE CORE — Premium Cybernetics & Neural Integration Mainframe
+# SYNAPSE CORE  Premium Cybernetics & Neural Integration Mainframe
 
 An advanced, highly interactive 3D web experience built with **React**, **Three.js (WebGL)**, and **Vite**. 
 
