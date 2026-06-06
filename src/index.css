@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* ── Deep Midnight Dark Theme ── */
+  --color-cyber-black: #080d1a;   /* Near-black navy page bg */
+  --color-cyber-dark:  #0d1628;   /* Card/panel bg */
+  --color-cyber-gray:  #1a2640;   /* Border / subtle bg */
+
+  /* Vivid accent colours */
+  --color-neon-cyan:   #22d3ee;   /* Electric teal */
+  --color-neon-blue:   #3b82f6;   /* Vivid blue */
+  --color-neon-purple: #a855f7;   /* Vibrant violet */
+  --color-neon-pink:   #f43f7e;   /* Hot magenta */
+
+  /* Slate scale — light text on dark bg */
+  --color-slate-50:  #f0f6ff;
+  --color-slate-100: #d6e4f7;
+  --color-slate-200: #a8c4e8;
+  --color-slate-300: #7aa4d0;
+  --color-slate-400: #4d7fa8;
+  --color-slate-500: #305a80;
+  --color-slate-600: #1e3a57;
+  --color-slate-700: #132640;
+  --color-slate-800: #0d1a2e;
+  --color-slate-900: #08101e;
+  --color-slate-950: #040a12;
+
+  --color-white: #f0f6ff;
+
+  --font-orbitron: "Orbitron", sans-serif;
+  --font-inter:    "Inter", sans-serif;
+
+  --animate-pulse-slow:  pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-scanline:    scanline 8s linear infinite;
+  --animate-grid-drift:  grid-drift 20s linear infinite;
+  --animate-cyber-glow:  cyber-glow 3s ease-in-out infinite alternate;
+}
+
+@keyframes scanline {
+  0%   { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+@keyframes grid-drift {
+  0%   { background-position: 0 0; }
+  100% { background-position: 40px 40px; }
+}
+
+@keyframes cyber-glow {
+  0%   { box-shadow: 0 0 8px rgba(34,211,238,0.2), inset 0 0 8px rgba(34,211,238,0.08); }
+  100% { box-shadow: 0 0 25px rgba(34,211,238,0.5), inset 0 0 12px rgba(34,211,238,0.2); }
+}
+
+/* ── Base ── */
+html {
+  scroll-behavior: smooth;
+  background-color: #080d1a;
+  color: #d6e4f7;
+  font-family: 'Inter', sans-serif;
+  /* prevent horizontal scroll on mobile */
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+  /* safe area for iPhone notch */
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Touch devices: ensure buttons are easy to tap */
+button, a {
+  touch-action: manipulation;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track  { background: #0d1628; }
+::-webkit-scrollbar-thumb  {
+  background: #1a2640;
+  border: 1px solid rgba(34,211,238,0.2);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(34,211,238,0.5);
+  box-shadow: 0 0 8px rgba(34,211,238,0.4);
+}
+
+/* ── Text Glows ── */
+.text-neon-glow-cyan   { text-shadow: 0 0 10px rgba(34,211,238,0.7), 0 0 20px rgba(34,211,238,0.3); }
+.text-neon-glow-purple { text-shadow: 0 0 10px rgba(168,85,247,0.7), 0 0 20px rgba(168,85,247,0.3); }
+.text-neon-glow-pink   { text-shadow: 0 0 10px rgba(244,63,126,0.7), 0 0 20px rgba(244,63,126,0.3); }
+
+/* ── Border accents ── */
+.border-neon-cyan {
+  border-color: rgba(34,211,238,0.4);
+  box-shadow: 0 0 12px rgba(34,211,238,0.2), inset 0 0 8px rgba(34,211,238,0.08);
+}
+.border-neon-purple {
+  border-color: rgba(168,85,247,0.4);
+  box-shadow: 0 0 12px rgba(168,85,247,0.2), inset 0 0 8px rgba(168,85,247,0.08);
+}
+
+/* ── Glassmorphism ── */
+.glass-panel {
+  background: rgba(13,22,40,0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(34,211,238,0.15);
+  box-shadow: 0 4px 32px rgba(0,0,0,0.4), 0 0 1px rgba(34,211,238,0.1);
+}
+.glass-panel-cyan {
+  background: rgba(13,22,40,0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(34,211,238,0.25);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 0 20px rgba(34,211,238,0.06);
+}
+.glass-panel-purple {
+  background: rgba(13,22,40,0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(168,85,247,0.25);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 0 20px rgba(168,85,247,0.06);
+}
+
+/* ── Cyber grid pattern ── */
+.cyber-grid {
+  background-size: 40px 40px;
+  background-image:
+    linear-gradient(to right,  rgba(34,211,238,0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(34,211,238,0.04) 1px, transparent 1px);
+}
+
+/* ── Scanlines overlay ── */
+.scanlines {
+  background: linear-gradient(rgba(0,0,0,0) 50%, rgba(0,0,0,0.15) 50%);
+  background-size: 100% 4px;
+}
+
+/* ── Radial glows ── */
+.glow-spot-cyan   { background: radial-gradient(circle at center, rgba(34,211,238,0.08) 0%, transparent 70%); }
+.glow-spot-purple { background: radial-gradient(circle at center, rgba(168,85,247,0.08) 0%, transparent 70%); }
+
+/* ── Utility ── */
+.no-cursor { cursor: none; }
+
+/* ── Clipping paths ── */
+.clip-cyber-card {
+  clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px));
+}
+.clip-cyber-btn {
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+}
